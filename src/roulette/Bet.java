@@ -20,6 +20,14 @@ public class Bet {
         myDescription = description;
         myOdds = odds;
     }
+    
+    public boolean checkWin(Wheel myWheel, String betChoice){
+    	return true;
+    }
+    
+    public String makeBet(){
+    	return "";
+    }
 
     /**
      * @return odds given by the house for this kind of bet
