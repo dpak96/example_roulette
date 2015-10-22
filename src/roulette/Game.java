@@ -1,5 +1,9 @@
 package roulette;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import roulette.bets.OddEven;
 import roulette.bets.RedBlack;
 import roulette.bets.ThreeConsecutive;
@@ -17,10 +21,15 @@ public class Game {
 
     // add new bet subclasses here
     private String[] myPossibleBets = {
-    		"Red or Black",
-    		"Odd or Even",
-    		"Three in a Row",
+    		"RedBlack",
+    		"OddEven",
+    		"ThreeConsecutive",
     };
+    
+    private String propertiesName = "description.properties";
+    
+    protected Properties descriptions = new Properties();
+    
     private BetFactory myFactory = new BetFactory();
     private Wheel myWheel;
 
@@ -29,6 +38,13 @@ public class Game {
      */
     public Game () {
         myWheel = new Wheel();
+        InputStream input = getClass().getClassLoader().getResourceAsStream(propertiesName);
+        try {
+			descriptions.load(input);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -73,7 +89,7 @@ public class Game {
         System.out.println("You can make one of the following types of bets:");
         for (int k = 0; k < myPossibleBets.length; k++) {
 
-            System.out.println(String.format("%d) %s", (k + 1), myPossibleBets[k]));
+            System.out.println(String.format("%d) %s", (k + 1), descriptions.getProperty(myPossibleBets[k]).split(",")[0]));
         }
         int response = ConsoleReader.promptRange("Please make a choice", 1, myPossibleBets.length);
         return myFactory.getBet(myPossibleBets[response-1]);
