@@ -1,5 +1,6 @@
 package roulette;
 
+import roulette.Wheel.SpinResult;
 import util.ConsoleReader;
 
 public class ColorBet extends Bet{
@@ -16,6 +17,18 @@ public class ColorBet extends Bet{
 	@Override
 	public String makeBet(){
 		return ConsoleReader.promptOneOf("Please bet", Wheel.BLACK, Wheel.RED);
+	}
+
+	@Override
+	public void place() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isMade(SpinResult spinResult) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

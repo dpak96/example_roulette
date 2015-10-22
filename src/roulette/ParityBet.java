@@ -1,5 +1,6 @@
 package roulette;
 
+import roulette.Wheel.SpinResult;
 import util.ConsoleReader;
 
 public class ParityBet extends Bet{
@@ -17,6 +18,18 @@ public class ParityBet extends Bet{
 	@Override
 	public String makeBet(){
 		return ConsoleReader.promptOneOf("Please bet", "even", "odd");
+	}
+
+	@Override
+	public void place() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isMade(SpinResult spinResult) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

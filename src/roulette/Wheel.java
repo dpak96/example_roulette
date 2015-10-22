@@ -91,12 +91,12 @@ public class Wheel {
     }
 
     // @return color of the current spot on the wheel
-    private String getColor () {
+    protected String getColor () {
         return OUR_SPOTS[myValue];
     }
 
     // @return number of the current spot on the wheel
-    private int getNumber () {
+    protected int getNumber () {
         return myValue;
     }
 
